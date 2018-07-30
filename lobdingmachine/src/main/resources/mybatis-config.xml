@@ -5,10 +5,10 @@
 <configuration>
     <typeAliases>
         <!-- mybatis에서 필요한 model들! -->
-        <typeAlias alias="name" type="경로"/>
+        <typeAlias alias="PopularSearch" type="kr.co.ldcc.lobdingmachine.model.search.PopularSearch"/>
     </typeAliases>
     <mappers>
         <!-- mapper(쿼리 들어있는 파일)들! -->
-        <mapper resource="mapper/user/~~~.xml"/>
+        <mapper resource="mapper/search/search.xml"/>
     </mappers>
 </configuration>
