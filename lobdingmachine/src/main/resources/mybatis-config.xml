@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <!-- mybatis에서 필요한 model들! -->
+        <typeAlias alias="name" type="경로"/>
+    </typeAliases>
+    <mappers>
+        <!-- mapper(쿼리 들어있는 파일)들! -->
+        <mapper resource="mapper/user/~~~.xml"/>
+    </mappers>
+</configuration>
