@@ -2,7 +2,6 @@ package kr.co.ldcc.lobdingmachine.controller.app;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.ldcc.lobdingmachine.dao.ProductDao;
 import kr.co.ldcc.lobdingmachine.model.product.Buy;
+import kr.co.ldcc.lobdingmachine.model.product.Inventory;
 import kr.co.ldcc.lobdingmachine.model.product.Product;
 
 @RestController
@@ -54,5 +54,8 @@ Body를 raw로 선택 후에 밑에 파라미터 입력!
 }
 	 */
 	
-	
+	@RequestMapping("/getInven")
+	public List<Inventory> getProductInven() {
+		return dao.getProductInven();
+	}
 }

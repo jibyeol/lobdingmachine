@@ -21,5 +21,15 @@
   	</foreach>
 	</insert>
 	
+	<select id="getProductInven" 
+		resultType="Inventory">
+		SELECT 
+		    *
+		FROM
+		    ldcc.machine_inventory
+		Where
+			machine_idx=1;
+	</select>
+	
 	
 </mapper>

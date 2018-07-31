@@ -8,6 +8,7 @@
         <typeAlias alias="PopularSearch" type="kr.co.ldcc.lobdingmachine.model.search.PopularSearch"/>
         <typeAlias alias="Product" type="kr.co.ldcc.lobdingmachine.model.product.Product"/>
         <typeAlias alias="Buy" type="kr.co.ldcc.lobdingmachine.model.product.Buy"/>
+        <typeAlias alias="Inventory" type="kr.co.ldcc.lobdingmachine.model.product.Inventory"/>
     </typeAliases>
     <mappers>
         <!-- mapper(쿼리 들어있는 파일)들! -->
