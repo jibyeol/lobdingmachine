@@ -11,4 +11,15 @@
 		    category_idx = #{categoryIdx};
 	</select>
 	
+	<insert id="setbuyProduct" parameterType="String">
+		insert INTO ldcc.payment
+		(member_idx, product_idx, pay_date, machine_idx)
+		values
+	<foreach collection="productList" item="buy"
+      open="(" separator="," close=")">
+        (1, #{buy.idx}, now(), 1);
+  	</foreach>
+	</insert>
+	
+	
 </mapper>

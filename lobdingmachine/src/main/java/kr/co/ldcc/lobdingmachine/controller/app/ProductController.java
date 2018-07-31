@@ -2,6 +2,7 @@ package kr.co.ldcc.lobdingmachine.controller.app;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,11 +25,11 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/buy")
-	public int buy(@RequestBody Buy buy) {
-		System.out.println(buy.getCardNumber());
-		System.out.println(buy.getPhoneNumber());
-		System.out.println(buy.getProductList().size());
-		return 1;
+	public List<Product> buyProduct(@RequestBody Buy buy)
+	{
+		return dao.setbuyProduct(buy);
+		//System.out.println(buy.getCardNumber());
+		//System.out.println(buy.getPhoneNumber());
 	}
 	
 	/**
