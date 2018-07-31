@@ -4,12 +4,12 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 	
 <tiles-definitions>
-	<definition name="default" template="/WEB-INF/tiles/layouts/main-layout.jsp">
-		<put-attribute name="title" value="김지별"/>
-		<put-attribute name="header" value="/WEB-INF/tiles/layouts/include/header.jsp" />
-		<put-attribute name="navigation" value="/WEB-INF/tiles/layouts/include/nav.jsp" />
-		<put-attribute name="body" value="/WEB-INF/tiles/layouts/include/body.jsp" />
-		<put-attribute name="footer" value="/WEB-INF/tiles/layouts/include/footer.jsp" />
+	<definition name="admin_default" template="/WEB-INF/tiles/layouts/main-layout.jsp">
+		<put-attribute name="title" value="롭딩머신"/>
+		<put-attribute name="header" value="/WEB-INF/tiles/layouts/admin/header.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/tiles/layouts/admin/nav.jsp" />
+		<put-attribute name="body" value="/WEB-INF/tiles/layouts/admin/body.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/layouts/admin/footer.jsp" />
 	</definition>
 	
 	<definition name="login" template="/WEB-INF/tiles/layouts/none.jsp">
@@ -17,11 +17,11 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/common/login.jsp"/>
 	</definition>
 	
-	<definition name="*/*" extends="default">
-		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp"/>
+	<definition name="admin/*/*" extends="admin_default">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/{1}/{2}.jsp"/>
 	</definition>
 	
-	<definition name="*/*/*" extends="default">
-		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}/{3}.jsp"/>
+	<definition name="admin/*/*/*" extends="admin_default">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/{1}/{2}/{3}.jsp"/>
 	</definition>
 </tiles-definitions>
