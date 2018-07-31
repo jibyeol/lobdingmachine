@@ -8,6 +8,7 @@ public class Product {
 	int price;
 	String imgUrl;
 	String description;
+	
 	public int getIdx() {
 		return idx;
 	}
