@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.ldcc.lobdingmachine.dao.SearchDao;
+import kr.co.ldcc.lobdingmachine.model.product.Product;
 import kr.co.ldcc.lobdingmachine.model.search.PopularSearch;
 
 @RestController
@@ -17,9 +18,20 @@ public class SearchController {
 	/**
 	 * 인기 검색어 리턴
 	 */
-	@RequestMapping("/search")
-	public List<PopularSearch> search() {
+	
+	@RequestMapping("/popularKeyword")
+	public List<PopularSearch> popularKeyword() {
 		return dao.getPopularSearch();
+	}
+	
+	
+	/**
+	 * 상품 검색어 리턴
+	 */
+	@RequestMapping("/product")
+	public List<Product> product(String keyword	){
+		//todo : 검색로그 저장
+		return dao.getProductSearch(keyword);
 	}
 	
 }

@@ -15,4 +15,16 @@
 		ORDER BY COUNT(*) DESC;
 	</select>
 	
+	<select id="getProductSearch" 
+		resultType="Product" parameterType="string">
+		SELECT 
+		    idx, name, category_idx, price, img_url, description
+		FROM
+		    ldcc.product
+		Where
+			name like '%${keyword}%';
+	</select>
+	
 </mapper>
+
+
