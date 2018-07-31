@@ -9,6 +9,10 @@ public class Product {
 	String imgUrl;
 	String description;
 	
+	// 제고 갯수 정보
+	int smaple; // 샘플 갯수
+	int count; // 재고 갯수
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -44,6 +48,18 @@ public class Product {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public int getSmaple() {
+		return smaple;
+	}
+	public void setSmaple(int smaple) {
+		this.smaple = smaple;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 }
