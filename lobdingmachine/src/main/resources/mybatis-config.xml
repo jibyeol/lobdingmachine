@@ -6,9 +6,11 @@
     <typeAliases>
         <!-- mybatis에서 필요한 model들! -->
         <typeAlias alias="PopularSearch" type="kr.co.ldcc.lobdingmachine.model.search.PopularSearch"/>
+        <typeAlias alias="Product" type="kr.co.ldcc.lobdingmachine.model.product.Product"/>
     </typeAliases>
     <mappers>
         <!-- mapper(쿼리 들어있는 파일)들! -->
         <mapper resource="mapper/search/search.xml"/>
+        <mapper resource="mapper/product/product.xml"/>
     </mappers>
 </configuration>
