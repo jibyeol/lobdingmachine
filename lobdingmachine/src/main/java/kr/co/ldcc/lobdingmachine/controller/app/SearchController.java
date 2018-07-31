@@ -30,7 +30,7 @@ public class SearchController {
 	 */
 	@RequestMapping("/product")
 	public List<Product> product(String keyword	){
-		//todo : 검색로그 저장
+		dao.insertSearchHistory(keyword);
 		return dao.getProductSearch(keyword);
 	}
 	

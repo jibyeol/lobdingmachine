@@ -15,15 +15,21 @@
 		ORDER BY COUNT(*) DESC;
 	</select>
 	
-	<select id="getProductSearch" 
-		resultType="Product" parameterType="string">
+	<select id="getProductSearch" resultType="Product" parameterType="String">
 		SELECT 
-		    idx, name, category_idx, price, img_url, description
+		    *
 		FROM
 		    ldcc.product
 		Where
-			name like '%${keyword}%';
+			name like CONCAT('%',#{keyword},'%');
 	</select>
+	
+	<insert id="insertSearchHistory" parameterType="String">
+		INSERT INTO ldcc.search
+			(keyword, search_date)
+		VALUES
+			(#{keyword}, now());
+	</insert>
 	
 </mapper>
 

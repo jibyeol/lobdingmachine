@@ -12,4 +12,5 @@ public interface SearchDao {
 
 	List<PopularSearch> getPopularSearch();
 	List<Product> getProductSearch(String keyword);
+	void insertSearchHistory(String keyword);
 }
