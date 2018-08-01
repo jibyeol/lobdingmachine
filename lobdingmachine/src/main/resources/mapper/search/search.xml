@@ -21,12 +21,12 @@
 		FROM
 		    ldcc.product
 		Where
-			name like CONCAT('%',#{keyword},'%');
+			name like CONCAT('%',#{keyword},'%') OR company like CONCAT('%',#{keyword},'%');
 	</select>
 	
 	<insert id="insertSearchHistory" parameterType="String">
 		INSERT INTO ldcc.search
-			(keyword, search_date)
+			(keyword, searchDate)
 		VALUES
 			(#{keyword}, now());
 	</insert>

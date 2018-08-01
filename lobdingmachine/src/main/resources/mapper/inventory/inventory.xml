@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.ldcc.lobdingmachine.dao.InventoryDao">
+	
+	<select id="getProductRepository" resultType="Product" parameterType="JqGridParameter">
+		SELECT 
+		    p.*, i.sampleCount AS sample, i.repositoryCount AS count
+		FROM
+		    ldcc.machine_inventory i
+		        LEFT JOIN
+		    ldcc.product p ON p.idx = i.productIdx
+		WHERE
+		    i.machineIdx = 1
+		LIMIT #{offset}, #{rows}
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		SELECT 
+		    COUNT(*)
+		FROM
+		    ldcc.machine_inventory
+		WHERE
+		    machineIdx = 1;
+	</select>
+	
+	<insert id="insertRepository" parameterType="Product">
+		INSERT INTO `ldcc`.`machine_inventory` 
+			(`machineIdx`, `productIdx`, `sampleCount`, `repositoryCount`) 
+		VALUES 
+			(1, #{productIdx}, #{sample}, #{count});
+	</insert>
+	
+	<update id="updateRepository" parameterType="Product">
+		UPDATE
+			`ldcc`.`machine_inventory`
+		SET
+			sampleCount = #{sample},
+			repositoryCount = #{count}
+		WHERE
+			machineIdx = 1 AND productIdx = #{idx}
+	</update>
+	
+	<delete id="deleteRepository" parameterType="int">
+		DELETE FROM 
+			`ldcc`.`machine_inventory`
+		WHERE 
+			machineIdx = 1 AND productIdx = #{value}
+	</delete>
+	
+</mapper>

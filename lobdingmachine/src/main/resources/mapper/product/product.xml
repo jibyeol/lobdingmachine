@@ -9,17 +9,29 @@
 		    ldcc.product
 		<if test="value > 0">
 		WHERE
-		    category_idx = #{value};
+		    categoryIdx = #{value};
 		</if>
 	</select>
 	
-	<insert id="setbuyProduct" parameterType="String">
+	<select id="getProductByCategoryIdxLimit" resultType="Product">
+		SELECT 
+		    *
+		FROM
+		    ldcc.product
+		<if test="categoryIdx > 0">
+		WHERE
+		    categoryIdx = #{categoryIdx};
+		</if>
+		LIMIT #{offset}, #{rows}
+	</select>
+	
+	<insert id="setbuyProduct" parameterType="Buy">
 		insert INTO ldcc.payment
-		(member_idx, product_idx, pay_date, machine_idx)
+		(memberIdx, productIdx, payDate, machineIdx)
 		values
-	<foreach collection="productList" item="buy"
+	<foreach collection="productList" item="product"
       open="(" separator="," close=")">
-        (1, #{buy.idx}, now(), 1);
+        (#{member.idx}, #{product.idx}, now(), 1);
   	</foreach>
 	</insert>
 	
@@ -30,16 +42,34 @@
 		    ldcc.product
 		<if test="value > 0">
 		WHERE
-		    category_idx = #{value};
+		    categoryIdx = #{value};
 		</if>
 	</select>
 	
 	<insert id="insert" parameterType="Product">
 		INSERT INTO
-			ldcc.product (`name`, `categoryIdx`, `price`, `imgUrl`, `description`)
+			ldcc.product (`company`, `name`, `categoryIdx`, `price`, `imgUrl`, `description`)
 		VALUES
-			(#{name}, #{categoryIdx}, #{price}, #{imgUrl}, #{description})
+			(#{company}, #{name}, #{categoryIdx}, #{price}, #{imgUrl}, #{description})
 	</insert>
+	
+	<update id="update" parameterType="Product">
+		UPDATE 
+		`ldcc`.`product` 
+		SET 
+			`name` = #{name},
+			`company` = #{company}, 
+			`categoryIdx` = #{categoryIdx}, 
+			`price` = #{price}, 
+			`imgUrl` = #{imgUrl}, 
+			`description` = #{description} 
+		WHERE `idx` = #{idx};
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM `ldcc`.`product`
+		WHERE idx = #{value};
+	</delete>
 	
 	<select id="getDetail" parameterType="int" resultType="Product">
 		SELECT 

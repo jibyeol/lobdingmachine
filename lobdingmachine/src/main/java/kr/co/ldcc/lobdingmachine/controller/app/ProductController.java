@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.ldcc.lobdingmachine.controller.AppBaseController;
 import kr.co.ldcc.lobdingmachine.dao.MemberDao;
 import kr.co.ldcc.lobdingmachine.dao.ProductDao;
 import kr.co.ldcc.lobdingmachine.model.common.ApiResult;
@@ -17,8 +16,8 @@ import kr.co.ldcc.lobdingmachine.model.product.Buy;
 import kr.co.ldcc.lobdingmachine.model.product.Product;
 
 @RestController
-@RequestMapping("/product")
-public class ProductController extends AppBaseController {
+@RequestMapping("/app/product")
+public class ProductController {
 
 	@Autowired ProductDao dao;
 	@Autowired MemberDao memberDao;

@@ -12,4 +12,11 @@ public class BaseController {
 		return this.resourceUrl;
 	}
 	
+	protected int getTotalPage(int totalCount, int rows) {
+		if(rows == 0) return 0;
+		int result = totalCount / rows;
+		if(totalCount % rows > 0) result ++;
+		return result;
+	}
+	
 }

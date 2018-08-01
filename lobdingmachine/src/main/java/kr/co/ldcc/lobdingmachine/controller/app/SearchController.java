@@ -11,6 +11,7 @@ import kr.co.ldcc.lobdingmachine.model.product.Product;
 import kr.co.ldcc.lobdingmachine.model.search.PopularSearch;
 
 @RestController
+@RequestMapping("/app/search")
 public class SearchController {
 	
 	@Autowired SearchDao dao;

@@ -8,42 +8,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ldcc.lobdingmachine.controller.BaseController;
-import kr.co.ldcc.lobdingmachine.dao.ProductDao;
+import kr.co.ldcc.lobdingmachine.dao.InventoryDao;
 import kr.co.ldcc.lobdingmachine.model.common.JqGridData;
 import kr.co.ldcc.lobdingmachine.model.common.JqGridParameter;
 import kr.co.ldcc.lobdingmachine.model.product.Product;
 
 @Controller
-@RequestMapping("/admin")
-public class AdminProductController extends BaseController {
+@RequestMapping("/admin/repository")
+public class AdminRepositoryController extends BaseController {
 	
-	@Autowired ProductDao dao;
-
-	@RequestMapping("/product")
-	public String productPage() {
-		return "admin/product/main";
+	@Autowired InventoryDao dao;
+	
+	@RequestMapping(value= {"", "/"})
+	public String repositoryPage() {
+		return "admin/repository/main";
 	}
 	
-	@RequestMapping("/getProductList")
+	@RequestMapping("/get")
 	@ResponseBody
-	public JqGridData<Product> getProductList(JqGridParameter param){
-		List<Product> data = dao.getProductByCategoryIdxLimit(-1, param.getOffset(), param.getRows());
-		int totalPage = getTotalPage(dao.getTotalCount(-1), param.getRows());
+	public JqGridData<Product> getRepository(JqGridParameter param) {
+		List<Product> data = dao.getProductRepository(param);
+		int totalPage = getTotalPage(dao.getTotalCount(), param.getRows());
 		return new JqGridData<>(param, data, totalPage);
 	}
-
-	@RequestMapping("/editProduct")
+	
+	@RequestMapping("/edit")
 	@ResponseBody
-	public String editProduct(Product product, String oper, String id) {
+	public String editRepositoryInfo(Product product, String oper, String id) {
 		if(oper.trim().equals("add")) {
-			dao.insert(product);
+			dao.insertRepository(product);
 		} else if(oper.trim().equals("edit")) {
 			product.setIdx(Integer.parseInt(id));
-			dao.update(product);
+			dao.updateRepository(product);
 		} else if(oper.trim().equals("del")) {
-			dao.delete(Integer.parseInt(id));
+			dao.deleteRepository(Integer.parseInt(id));
 		}
 		return "SUCCESS";
 	}
-	
+
 }

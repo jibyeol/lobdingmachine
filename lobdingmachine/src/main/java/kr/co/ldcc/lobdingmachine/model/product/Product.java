@@ -3,6 +3,7 @@ package kr.co.ldcc.lobdingmachine.model.product;
 public class Product {
 
 	int idx;
+	String company;
 	String name;
 	int categoryIdx;
 	int price;
@@ -19,6 +20,7 @@ public class Product {
 	
 
 	public void setDetailInfo(Product p) {
+		this.company = p.getCompany();
 		this.name = p.getName();
 		this.categoryIdx = p.getCategoryIdx();
 		this.price = p.getPrice();
@@ -41,6 +43,24 @@ public class Product {
 	// getter, setter
 	public int getIdx() {
 		return idx;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public int getBuyCount() {
+		return buyCount;
+	}
+	public void setBuyCount(int buyCount) {
+		this.buyCount = buyCount;
+	}
+	public int getSampleCount() {
+		return sampleCount;
+	}
+	public void setSampleCount(int sampleCount) {
+		this.sampleCount = sampleCount;
 	}
 	public void setIdx(int idx) {
 		this.idx = idx;

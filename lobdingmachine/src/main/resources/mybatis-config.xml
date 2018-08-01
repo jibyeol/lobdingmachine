@@ -9,11 +9,15 @@
         <typeAlias alias="Product" type="kr.co.ldcc.lobdingmachine.model.product.Product"/>
         <typeAlias alias="Buy" type="kr.co.ldcc.lobdingmachine.model.product.Buy"/>
         <typeAlias alias="Member" type="kr.co.ldcc.lobdingmachine.model.member.Member"/>
+        <typeAlias alias="JqGridParameter" type="kr.co.ldcc.lobdingmachine.model.common.JqGridParameter"/>
+        <typeAlias alias="Image" type="kr.co.ldcc.lobdingmachine.model.image.Image"/>
     </typeAliases>
     <mappers>
         <!-- mapper(쿼리 들어있는 파일)들! -->
         <mapper resource="mapper/search/search.xml"/>
         <mapper resource="mapper/product/product.xml"/>
         <mapper resource="mapper/member/member.xml"/>
+        <mapper resource="mapper/inventory/inventory.xml"/>
+        <mapper resource="mapper/image/image.xml"/>
     </mappers>
 </configuration>

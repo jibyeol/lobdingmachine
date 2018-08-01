@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.ldcc.lobdingmachine.dao.ImageDao">
+	
+	<select id="getProductRepository" resultType="Image" parameterType="JqGridParameter">
+		SELECT 
+		    *
+		FROM
+		    ldcc.image_list
+		ORDER BY idx DESC
+		LIMIT #{offset}, #{rows}
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO `ldcc`.`image_list` (`url`) 
+		VALUES (#{url});
+	</insert>
+	
+</mapper>

@@ -1,6 +1,6 @@
 <div class="row">
    <div class="col-xs-12">
-       <div id="productList" style="float: left;">
+       <div id="repositoryList" style="float: left;">
            <table id="grid"></table>
            <div id="pager"></div>
        </div>
@@ -21,20 +21,17 @@
 		$(document).ready(function myfunction() {
 			
 			$("#grid").jqGrid({
-				url : '${context}/admin/getProductList',
-				editurl : '${context}/admin/editProduct',
+				url : '${context}/admin/repository/get',
+				editurl : '${context}/admin/repository/edit',
 	            colModel: [
 	            	{label:"idx", name : "idx", key:true, search:false},
-	            	{label:"company", name:"company", editable:true},
-	            	{label:"name", name:"name", editable:true},
-	            	{label:"categoryIdx", name:"categoryIdx", editable:true, edittype:"select", search:false
-	            		, editoptions:{value:{1:'스킨캐어',2:'메이크업',3:'바디케어',4:'헤어케어',5:'남성',6:'미용소품'}}},
-	            	{label:"price", name:"price", search:false, editable: true},
-	            	{label:"img", name:"imgUrl", search:false, editable: false, formatter: function (cellValue, options, rowObject) {
+	            	{label:"company", name : "company", search:false, editable:false},
+	            	{label:"name", name : "name", search:false, editable:false},
+	            	{label:"imgUrl", name:"imgUrl", search:false, editable: false, formatter: function (cellValue, options, rowObject) {
 	                    return "<img width='80%' src='" + cellValue + "' alt='my image' />";
 	                }},
-	            	{label:"imgUrl", name:"imgUrl", search:false, editable: true},
-	            	{label:"description", name:"description", search:false, editable: true},
+	            	{label:"sample", name:"sample", search:false, editable: true},
+	            	{label:"count", name:"count", search:false, editable: true},
 	            ],
 	            datatype: 'json',
 	            pager : "#pager",
