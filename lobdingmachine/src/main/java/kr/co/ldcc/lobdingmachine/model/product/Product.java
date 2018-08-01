@@ -10,9 +10,35 @@ public class Product {
 	String description;
 	
 	// 제고 갯수 정보
-	int smaple; // 샘플 갯수
+	int sample; // 샘플 갯수
 	int count; // 재고 갯수
 	
+	// 구매할 갯수
+	int buyCount;
+	int sampleCount;
+	
+
+	public void setDetailInfo(Product p) {
+		this.name = p.getName();
+		this.categoryIdx = p.getCategoryIdx();
+		this.price = p.getPrice();
+		this.imgUrl = p.getImgUrl();
+		this.description = p.getDescription();
+		this.sample = p.getSample();
+		this.count = p.getCount();
+	}
+	public boolean isBuyPosible() {
+		return count > buyCount;
+	}
+	public boolean isSamplePosible() {
+		return sample > sampleCount;
+	}
+	public void setBuyValue() {
+		this.sample = this.sample - this.sampleCount;
+		this.count = this.count - this.buyCount;
+	}
+	
+	// getter, setter
 	public int getIdx() {
 		return idx;
 	}
@@ -49,11 +75,11 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getSmaple() {
-		return smaple;
+	public int getSample() {
+		return sample;
 	}
-	public void setSmaple(int smaple) {
-		this.smaple = smaple;
+	public void setSample(int sample) {
+		this.sample = sample;
 	}
 	public int getCount() {
 		return count;

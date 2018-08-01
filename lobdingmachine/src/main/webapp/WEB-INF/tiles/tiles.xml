@@ -4,7 +4,7 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 	
 <tiles-definitions>
-	<definition name="admin_default" template="/WEB-INF/tiles/layouts/main-layout.jsp">
+	<definition name="admin_default" template="/WEB-INF/tiles/layouts/admin-layout.jsp">
 		<put-attribute name="title" value="롭딩머신"/>
 		<put-attribute name="header" value="/WEB-INF/tiles/layouts/admin/header.jsp" />
 		<put-attribute name="navigation" value="/WEB-INF/tiles/layouts/admin/nav.jsp" />

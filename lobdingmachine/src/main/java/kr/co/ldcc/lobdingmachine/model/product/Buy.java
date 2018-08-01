@@ -2,12 +2,20 @@ package kr.co.ldcc.lobdingmachine.model.product;
 
 import java.util.List;
 
+import kr.co.ldcc.lobdingmachine.model.member.Member;
+
 public class Buy {
 
 	List<Product> productList;
 	String phoneNumber;
 	String cardNumber;
+	Member member;
 	
+	public boolean isLotteCard() {
+		return cardNumber.trim().equals("12345678");
+	}
+	
+	// setter, getter
 	public List<Product> getProductList() {
 		return productList;
 	}
@@ -25,6 +33,12 @@ public class Buy {
 	}
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
+	}
+	public Member getMember() {
+		return member;
+	}
+	public void setMember(Member member) {
+		this.member = member;
 	}
 	
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.ldcc.lobdingmachine.dao.MemberDao">
+	<!-- <select id="selectUserList"
+		parameterType="com.jsonobject.example.domain.User" 
+		resultMap="userMap">
+	</select> -->
+	
+	<select id="getMemberByPhoneNumber" parameterType="String" resultType="Member">
+		SELECT 
+		    *
+		FROM
+		    ldcc.member
+		WHERE
+		    phoneNumber = #{value};
+	</select>
+	
+	<update id="update" parameterType="Member">
+		UPDATE 
+			`ldcc`.`member` 
+		SET 
+			`name` = #{name}, 
+			`rrn` = #{rrn}, 
+			`point` = #{point}, 
+			`phoneNumber` = #{phoneNumber}, 
+			`skinType` = #{skinType} 
+		WHERE `idx` = #{idx};
+	</update>
+	
+</mapper>
+
+

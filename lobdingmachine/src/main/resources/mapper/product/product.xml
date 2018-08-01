@@ -7,8 +7,10 @@
 		    *
 		FROM
 		    ldcc.product
+		<if test="value > 0">
 		WHERE
-		    category_idx = #{categoryIdx};
+		    category_idx = #{value};
+		</if>
 	</select>
 	
 	<insert id="setbuyProduct" parameterType="String">
@@ -21,5 +23,33 @@
   	</foreach>
 	</insert>
 	
+	<select id="getTotalCount" parameterType="int" resultType="int">
+		SELECT 
+		    COUNT(*)
+		FROM
+		    ldcc.product
+		<if test="value > 0">
+		WHERE
+		    category_idx = #{value};
+		</if>
+	</select>
+	
+	<insert id="insert" parameterType="Product">
+		INSERT INTO
+			ldcc.product (`name`, `categoryIdx`, `price`, `imgUrl`, `description`)
+		VALUES
+			(#{name}, #{categoryIdx}, #{price}, #{imgUrl}, #{description})
+	</insert>
+	
+	<select id="getDetail" parameterType="int" resultType="Product">
+		SELECT 
+		    p.*, i.sampleCount AS sample, i.repositoryCount AS count
+		FROM
+		    ldcc.machine_inventory i
+		        LEFT JOIN
+		    ldcc.product p ON p.idx = i.productIdx
+		WHERE
+		    i.machineIdx = 1 AND p.idx = #{value};
+	</select>
 	
 </mapper>
