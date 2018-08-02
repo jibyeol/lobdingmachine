@@ -1,6 +1,8 @@
 package kr.co.ldcc.lobdingmachine.model.member;
 
-public class Member {
+import java.io.Serializable;
+
+public class Member implements Serializable {
 
 	int idx;
 	String name;
@@ -8,6 +10,8 @@ public class Member {
 	int point;
 	String phoneNumber;
 	int skinType;
+	String rank; // SILVER, GOLD, VIP
+	boolean man;
 	
 	public int getIdx() {
 		return idx;
@@ -44,6 +48,18 @@ public class Member {
 	}
 	public void setSkinType(int skinType) {
 		this.skinType = skinType;
+	}
+	public String getRank() {
+		return rank;
+	}
+	public void setRank(String rank) {
+		this.rank = rank;
+	}
+	public boolean isMan() {
+		return man;
+	}
+	public void setMan(boolean man) {
+		this.man = man;
 	}
 	
 }

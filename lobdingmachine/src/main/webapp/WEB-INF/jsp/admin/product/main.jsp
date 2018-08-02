@@ -33,7 +33,8 @@
 	            	{label:"img", name:"imgUrl", search:false, editable: false, formatter: function (cellValue, options, rowObject) {
 	                    return "<img width='80%' src='" + cellValue + "' alt='my image' />";
 	                }},
-	            	{label:"imgUrl", name:"imgUrl", search:false, editable: true},
+	            	{label:"imageFile", name:"imageFile", search:false, editable: true, hidden:true, editrules: {edithidden:true}
+	                	, edittype:'file', editoptions:{enctype:'multipart/form-data'}},
 	            	{label:"description", name:"description", search:false, editable: true},
 	            ],
 	            datatype: 'json',

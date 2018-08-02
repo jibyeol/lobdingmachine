@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.ldcc.lobdingmachine.controller.BaseController;
 import kr.co.ldcc.lobdingmachine.dao.ProductDao;
@@ -35,14 +36,14 @@ public class AdminProductController extends BaseController {
 	@RequestMapping("/editProduct")
 	@ResponseBody
 	public String editProduct(Product product, String oper, String id) {
-		if(oper.trim().equals("add")) {
+		/*if(oper.trim().equals("add")) {
 			dao.insert(product);
 		} else if(oper.trim().equals("edit")) {
 			product.setIdx(Integer.parseInt(id));
 			dao.update(product);
 		} else if(oper.trim().equals("del")) {
 			dao.delete(Integer.parseInt(id));
-		}
+		}*/
 		return "SUCCESS";
 	}
 	

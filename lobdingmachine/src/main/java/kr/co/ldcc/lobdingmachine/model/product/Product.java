@@ -1,6 +1,11 @@
 package kr.co.ldcc.lobdingmachine.model.product;
 
-public class Product {
+import java.io.Serializable;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
+public class Product implements Serializable {
 
 	int idx;
 	String company;
@@ -17,6 +22,13 @@ public class Product {
 	// 구매할 갯수
 	int buyCount;
 	int sampleCount;
+	
+	// 이미지 업로드
+	MultipartFile imageFile;
+	
+	// 리뷰 리스트
+	List<Review> reviews;
+	List<String> hashtag;
 	
 
 	public void setDetailInfo(Product p) {
@@ -106,6 +118,24 @@ public class Product {
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
+	}
+	public List<Review> getReviews() {
+		return reviews;
+	}
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+	public List<String> getHashtag() {
+		return hashtag;
+	}
+	public void setHashtag(List<String> hashtag) {
+		this.hashtag = hashtag;
 	}
 	
 }

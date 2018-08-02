@@ -6,11 +6,11 @@
 		SELECT 
 		    *
 		FROM
-		    ldcc.product
-		<if test="value > 0">
+		    ldcc.product p
+		        LEFT JOIN
+		    ldcc.machine_inventory i ON p.idx = i.productIdx
 		WHERE
-		    categoryIdx = #{value};
-		</if>
+		    <if test="value > 0">categoryIdx = #{value} AND </if>i.repositoryCount > 0;
 	</select>
 	
 	<select id="getProductByCategoryIdxLimit" resultType="Product">
@@ -26,13 +26,12 @@
 	</select>
 	
 	<insert id="setbuyProduct" parameterType="Buy">
-		insert INTO ldcc.payment
+		INSERT INTO ldcc.payment
 		(memberIdx, productIdx, payDate, machineIdx)
 		values
-	<foreach collection="productList" item="product"
-      open="(" separator="," close=")">
-        (#{member.idx}, #{product.idx}, now(), 1);
-  	</foreach>
+		<foreach collection="productList" item="product" separator=",">
+	        (#{member.idx}, #{product.idx}, now(), 1)
+	  	</foreach>
 	</insert>
 	
 	<select id="getTotalCount" parameterType="int" resultType="int">
@@ -80,6 +79,23 @@
 		    ldcc.product p ON p.idx = i.productIdx
 		WHERE
 		    i.machineIdx = 1 AND p.idx = #{value};
+	</select>
+	
+	<select id="getReviewByProductIdx" parameterType="int" resultType="Review">
+		SELECT 
+		    r.*
+		    , m.idx as `member.idx`
+		    , m.name as `member.name`
+		    , m.rrn as `member.rrn`
+		    , m.point as `member.point`
+		    , m.phoneNumber as `member.phoneNumber`
+		    , m.skinType as `member.skinType`
+		    , substr(m.rrn,7,1) in (1, 3) as `member.man`
+		FROM
+		    ldcc.review r
+		        LEFT JOIN
+		    ldcc.member m ON r.memberIdx = m.idx
+		where r.productIdx = #{value};
 	</select>
 	
 </mapper>
