@@ -18,12 +18,12 @@
             <span class="nav-link-text">재고관리</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <%-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="${context }/admin/image">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">이미지 업로드</span>
           </a>
-        </li>
+        </li> --%>
       </ul>
       <%-- <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">

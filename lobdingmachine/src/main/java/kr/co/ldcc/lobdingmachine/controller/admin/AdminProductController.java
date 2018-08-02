@@ -36,14 +36,14 @@ public class AdminProductController extends BaseController {
 	@RequestMapping("/editProduct")
 	@ResponseBody
 	public String editProduct(Product product, String oper, String id) {
-		/*if(oper.trim().equals("add")) {
+		if(oper.trim().equals("add")) {
 			dao.insert(product);
 		} else if(oper.trim().equals("edit")) {
 			product.setIdx(Integer.parseInt(id));
 			dao.update(product);
 		} else if(oper.trim().equals("del")) {
 			dao.delete(Integer.parseInt(id));
-		}*/
+		}
 		return "SUCCESS";
 	}
 	

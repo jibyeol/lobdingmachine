@@ -42,7 +42,7 @@ public class AdminImageController extends BaseController {
 			dao.insert(new Image(fileUrl+fileName));
 			attr.addFlashAttribute("url", fileUrl+fileName);
 		}
-		return "redirect:/admin/image";
+		return "redirect:/admin/product";
 
 	}
 

@@ -1,3 +1,10 @@
+<c:if test="${url != null }">추가된 URL : ${url }</c:if>
+<form action="${context }/admin/image/upload" id="fileUpload" name="fileUpload" method="post" enctype="multipart/form-data">
+	파일 : <input type="file" name="multipartFile"><br>
+	<input type="submit" name="업로드" value="제출">
+</form>
+<br><br>
+
 <div class="row">
    <div class="col-xs-12">
        <div id="productList" style="float: left;">
@@ -33,8 +40,9 @@
 	            	{label:"img", name:"imgUrl", search:false, editable: false, formatter: function (cellValue, options, rowObject) {
 	                    return "<img width='80%' src='" + cellValue + "' alt='my image' />";
 	                }},
-	            	{label:"imageFile", name:"imageFile", search:false, editable: true, hidden:true, editrules: {edithidden:true}
-	                	, edittype:'file', editoptions:{enctype:'multipart/form-data'}},
+	                {label:"imgUrl", name:"imgUrl", search:false, editable: true},
+	            	/* {label:"imageFile", name:"imageFile", search:false, editable: true, hidden:true, editrules: {edithidden:true}
+	                	, edittype:'file', editoptions:{enctype:'multipart/form-data'}, formatter: jgImageFormatter}, */
 	            	{label:"description", name:"description", search:false, editable: true},
 	            ],
 	            datatype: 'json',

@@ -23,9 +23,6 @@ public class Product implements Serializable {
 	int buyCount;
 	int sampleCount;
 	
-	// 이미지 업로드
-	MultipartFile imageFile;
-	
 	// 리뷰 리스트
 	List<Review> reviews;
 	List<String> hashtag;
@@ -118,12 +115,6 @@ public class Product implements Serializable {
 	}
 	public void setCount(int count) {
 		this.count = count;
-	}
-	public MultipartFile getImageFile() {
-		return imageFile;
-	}
-	public void setImageFile(MultipartFile imageFile) {
-		this.imageFile = imageFile;
 	}
 	public List<Review> getReviews() {
 		return reviews;
