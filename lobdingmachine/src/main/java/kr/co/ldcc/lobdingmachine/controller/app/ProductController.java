@@ -15,11 +15,13 @@ import kr.co.ldcc.lobdingmachine.model.common.ApiResult;
 import kr.co.ldcc.lobdingmachine.model.member.Member;
 import kr.co.ldcc.lobdingmachine.model.product.Buy;
 import kr.co.ldcc.lobdingmachine.model.product.Product;
+import kr.co.ldcc.lobdingmachine.service.TurnArduinoService;
 
 @RestController
 @RequestMapping("/app/product")
 public class ProductController {
 
+	@Autowired TurnArduinoService service;
 	@Autowired ProductDao dao;
 	@Autowired MemberDao memberDao;
 	@Autowired InventoryDao inventoryDao;
@@ -88,7 +90,8 @@ public class ProductController {
 			user.setPoint(user.getPoint() + point);
 			memberDao.update(user);
 		}
-		// TODO 상품지급
+		// 상품지급
+		service.turn(1);
 		return new ApiResult(0, "SUCCESS", point);
 	}
 	

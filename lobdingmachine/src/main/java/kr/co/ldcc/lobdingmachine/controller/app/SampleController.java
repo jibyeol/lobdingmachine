@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -21,22 +22,18 @@ import kr.co.ldcc.lobdingmachine.model.kakao.Body;
 import kr.co.ldcc.lobdingmachine.model.kakao.Result;
 import kr.co.ldcc.lobdingmachine.model.member.Member;
 import kr.co.ldcc.lobdingmachine.model.product.Product;
+import kr.co.ldcc.lobdingmachine.service.TurnArduinoService;
 
 @RestController
 @RequestMapping("/app/sample")
 public class SampleController {
 
+	@Autowired TurnArduinoService service;
 	@Autowired RestTemplate restTemplate;
 	@Autowired MemberDao memberDao;
 	@Autowired SampleDao sampleDao;
 	@Autowired ProductDao productDao;
 	@Autowired InventoryDao inventoryDao;
-	
-	@RequestMapping("/test")
-	public String test(String phoneNumber) {
-		sendKakao(phoneNumber, "test");
-		return "success";
-	}
 	
 	@RequestMapping("/auth")
 	public ApiResult<Integer> authKakao(String phoneNumber, int productIdx) {
@@ -112,11 +109,17 @@ public class SampleController {
 		int totalSampleCoupon = getTotalSampleCoupon(member.getRank(), sampleDao.getUsedSampleCoupon(member.getIdx()));
 		if(totalSampleCoupon <= 0)
 			return new ApiResult<>(300, "받을 수 있는 샘플 갯수를 초과하였습니다.");
-		sampleDao.useSampleCoupon(member.getIdx());
-		// TODO 샘플 지급 
+		sampleDao.useSampleCoupon(member.getIdx()); 
+		service.turn(2);
 		p.setSample(p.getSample() - 1);
 		inventoryDao.updateRepository(p);
 		return new ApiResult<>(0, "SUCCESS");
+	}
+	
+	@RequestMapping("/test")
+	public String test(int val) {
+		service.turn(val);
+		return "SUCCESS";
 	}
 	
 }

@@ -12,6 +12,7 @@
         <typeAlias alias="JqGridParameter" type="kr.co.ldcc.lobdingmachine.model.common.JqGridParameter"/>
         <typeAlias alias="Image" type="kr.co.ldcc.lobdingmachine.model.image.Image"/>
         <typeAlias alias="Review" type="kr.co.ldcc.lobdingmachine.model.product.Review"/>
+        <typeAlias alias="StatisticsData" type="kr.co.ldcc.lobdingmachine.model.statistics.StatisticsData"/>
     </typeAliases>
     <mappers>
         <!-- mapper(쿼리 들어있는 파일)들! -->
@@ -21,5 +22,6 @@
         <mapper resource="mapper/inventory/inventory.xml"/>
         <mapper resource="mapper/image/image.xml"/>
         <mapper resource="mapper/sample/sample.xml"/>
+        <mapper resource="mapper/statistics/statistics.xml"/>
     </mappers>
 </configuration>

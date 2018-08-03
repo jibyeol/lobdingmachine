@@ -8,7 +8,7 @@
 		    ldcc.sample_log
 		WHERE
 		    memberIdx = #{value}
-		        AND usedDate >= CONCAT(DATE_FORMAT(NOW(), '%Y-%d'), '-01 00:00:00');
+		        AND usedDate >= CONCAT(DATE_FORMAT(NOW(), '%Y-%m'), '-01 00:00:00');
 	</select>
 	
 	<insert id="insert">

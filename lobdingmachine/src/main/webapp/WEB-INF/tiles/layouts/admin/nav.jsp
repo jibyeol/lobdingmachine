@@ -18,6 +18,12 @@
             <span class="nav-link-text">재고관리</span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="${context }/admin/statistics">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">통계</span>
+          </a>
+        </li>
         <%-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="${context }/admin/image">
             <i class="fa fa-fw fa-dashboard"></i>
