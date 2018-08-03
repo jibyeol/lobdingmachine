@@ -27,10 +27,10 @@
 	
 	<insert id="setbuyProduct" parameterType="Buy">
 		INSERT INTO ldcc.payment
-		(memberIdx, productIdx, payDate, machineIdx)
+		(memberIdx, productIdx, payDate, machineIdxm, count)
 		values
 		<foreach collection="productList" item="product" separator=",">
-	        (#{member.idx}, #{product.idx}, now(), 1)
+	        (#{member.idx}, #{product.idx}, now(), 1, #{product.buyCount})
 	  	</foreach>
 	</insert>
 	

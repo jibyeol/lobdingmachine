@@ -13,6 +13,7 @@
         <typeAlias alias="Image" type="kr.co.ldcc.lobdingmachine.model.image.Image"/>
         <typeAlias alias="Review" type="kr.co.ldcc.lobdingmachine.model.product.Review"/>
         <typeAlias alias="StatisticsData" type="kr.co.ldcc.lobdingmachine.model.statistics.StatisticsData"/>
+        <typeAlias alias="Payment" type="kr.co.ldcc.lobdingmachine.model.payment.Payment"/>
     </typeAliases>
     <mappers>
         <!-- mapper(쿼리 들어있는 파일)들! -->
@@ -23,5 +24,6 @@
         <mapper resource="mapper/image/image.xml"/>
         <mapper resource="mapper/sample/sample.xml"/>
         <mapper resource="mapper/statistics/statistics.xml"/>
+        <mapper resource="mapper/payment/payment.xml"/>
     </mappers>
 </configuration>

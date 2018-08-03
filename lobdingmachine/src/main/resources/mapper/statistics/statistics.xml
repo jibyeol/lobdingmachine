@@ -4,7 +4,7 @@
 	<select id="getData" resultType="StatisticsData" parameterType="string">
 		SELECT 
 		    DATE_FORMAT(payDate, '%Y-%m-%d %H') AS date,
-		    SUM(product.price) AS price
+		    SUM(product.price*pay.count) AS price
 		FROM
 		    ldcc.payment pay
 		        LEFT JOIN
