@@ -72,8 +72,8 @@ public class ProductController {
 		String rrn = reviews.get(0).getMember().getRrn();
 		if(rrn == null) return "20대";
 		String bornYearStr = rrn.substring(0, 2);
-		if(bornYearStr.startsWith("9")) bornYearStr = ("19" + bornYearStr);
-		else bornYearStr = ("20" + bornYearStr);
+		if(bornYearStr.startsWith("0") || bornYearStr.startsWith("1") || bornYearStr.startsWith("2")) bornYearStr = ("20" + bornYearStr);
+		else bornYearStr = ("19" + bornYearStr);
 		int bornYear = Integer.parseInt(bornYearStr);
 		Date date = new Date();
 		Calendar calendar = new GregorianCalendar();
