@@ -1,6 +1,9 @@
 package kr.co.ldcc.lobdingmachine.controller.app;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ import kr.co.ldcc.lobdingmachine.model.common.ApiResult;
 import kr.co.ldcc.lobdingmachine.model.member.Member;
 import kr.co.ldcc.lobdingmachine.model.product.Buy;
 import kr.co.ldcc.lobdingmachine.model.product.Product;
+import kr.co.ldcc.lobdingmachine.model.product.Review;
 import kr.co.ldcc.lobdingmachine.service.TurnArduinoService;
 
 @RestController
@@ -42,21 +46,49 @@ public class ProductController {
 	public Product getProductByIdx(int idx) {
 		Product product = dao.getDetail(idx);
 		product.setReviews(dao.getReviewByProductIdx(idx));
-		/*int totalSize = product.getReviews() == null ? 0 : product.getReviews().size();
-		int man;
-		int woman;
-		int 
-		for(Review r : product.getReviews()) {
-			
-		}*/
 		List<String> hashtag = new ArrayList<String>();
-		hashtag.add("여자");
-		hashtag.add("20대");
-		hashtag.add("지성");
+		hashtag.add(isMan(product.getReviews()) ? "남자" : "여자");
+		hashtag.add(getAge(product.getReviews()));
+		hashtag.add(getType(product.getReviews()));
 		product.setHashtag(hashtag);
 		return product;
 	}
 	
+	private String getType(List<Review> reviews) {
+		if(reviews == null || reviews.size() <= 0) return "다양한 피부타입";
+		int skinType = reviews.get(0).getMember().getSkinType();
+		switch(skinType) {
+			case 1 : 
+				return "건성";
+			case 2 :
+				return "복합성";
+			default : 
+				return "지성";
+		}
+	}
+
+	private String getAge(List<Review> reviews) {
+		if(reviews == null || reviews.size() <= 0) return "다양한 연령대";
+		String rrn = reviews.get(0).getMember().getRrn();
+		if(rrn == null) return "20대";
+		String bornYearStr = rrn.substring(0, 2);
+		if(bornYearStr.startsWith("9")) bornYearStr = ("19" + bornYearStr);
+		else bornYearStr = ("20" + bornYearStr);
+		int bornYear = Integer.parseInt(bornYearStr);
+		Date date = new Date();
+		Calendar calendar = new GregorianCalendar();
+		calendar.setTime(date);
+		int year = calendar.get(Calendar.YEAR);
+		int age = (year - bornYear) + 1;
+		age = age / 10;
+		return age == 0 ? "10대 이하" : age + "0대";
+	}
+
+	private boolean isMan(List<Review> reviews) {
+		if(reviews == null || reviews.size() <= 0) return false;
+		return reviews.get(0).getMember().isMan();
+	}
+
 	@RequestMapping("/buy")
 	public ApiResult buyProduct(@RequestBody Buy buy)
 	{
