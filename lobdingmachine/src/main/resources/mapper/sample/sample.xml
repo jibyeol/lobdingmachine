@@ -3,7 +3,7 @@
 	
 	<select id="getUsedSampleCoupon" resultType="int" parameterType="int">
 		SELECT 
-		    *
+		    COUNT(*)
 		FROM
 		    ldcc.sample_log
 		WHERE
@@ -11,7 +11,7 @@
 		        AND usedDate >= CONCAT(DATE_FORMAT(NOW(), '%Y-%m'), '-01 00:00:00');
 	</select>
 	
-	<insert id="insert">
+	<insert id="useSampleCoupon">
 		INSERT INTO `ldcc`.`sample_log` (`memberIdx`, `usedDate`) VALUES (#{value}, now());
 	</insert>
 	
