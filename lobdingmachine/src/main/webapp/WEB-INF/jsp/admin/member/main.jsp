@@ -43,7 +43,7 @@
 			});
 			
 			$('#grid').navGrid('#pager',
-			       {edit: true, add: true, del: true, search: true, refresh: true, view: true, position: "left", cloneToTop: true},
+			       {edit: true, add: true, del: false, search: true, refresh: true, view: true, position: "left", cloneToTop: true},
 			       {
 			           editCaption: "edit"
 			           , closeAfterEdit: true

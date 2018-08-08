@@ -18,7 +18,7 @@ public interface MemberDao {
 
 	void insert(Member member);
 
-	void delete(int parseInt);
+	void delete(int idx);
 
 	int getTotalCount();
 	
