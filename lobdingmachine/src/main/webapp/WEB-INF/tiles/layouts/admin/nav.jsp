@@ -30,6 +30,12 @@
             <span class="nav-link-text">구매로그 확인</span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="${context }/admin/member">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">회원관리</span>
+          </a>
+        </li>
         <%-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="${context }/admin/image">
             <i class="fa fa-fw fa-dashboard"></i>
