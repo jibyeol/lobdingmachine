@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ldcc.lobdingmachine.controller.BaseController;
 import kr.co.ldcc.lobdingmachine.dao.MemberDao;
@@ -23,11 +24,13 @@ public class AdminMemberController extends BaseController {
 	}
 	
 	@RequestMapping("/getData")
+	@ResponseBody
 	public List<Member> member(JqGridParameter param){
 		return dao.getList(param);
 	}
 	
 	@RequestMapping("/edit")
+	@ResponseBody
 	public String editMember(Member member, String oper, String id) {
 		member.setRank("GOLD");
 		member.setSkinType(1);

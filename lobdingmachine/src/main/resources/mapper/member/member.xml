@@ -26,7 +26,7 @@
 		WHERE `idx` = #{idx};
 	</update>
 	
-	<select id="getList" parameterType="JqGridParameter" returnType="Member">
+	<select id="getList" parameterType="JqGridParameter" resultType="Member">
 		select * from ldcc.member
 		ORDER BY idx DESC
 		LIMIT #{offset}, #{rows}
