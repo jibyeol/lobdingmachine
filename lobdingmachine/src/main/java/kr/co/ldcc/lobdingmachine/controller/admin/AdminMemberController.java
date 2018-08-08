@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ldcc.lobdingmachine.controller.BaseController;
 import kr.co.ldcc.lobdingmachine.dao.MemberDao;
+import kr.co.ldcc.lobdingmachine.model.common.JqGridData;
 import kr.co.ldcc.lobdingmachine.model.common.JqGridParameter;
 import kr.co.ldcc.lobdingmachine.model.member.Member;
 
@@ -25,8 +26,10 @@ public class AdminMemberController extends BaseController {
 	
 	@RequestMapping("/getData")
 	@ResponseBody
-	public List<Member> member(JqGridParameter param){
-		return dao.getList(param);
+	public JqGridData<Member> member(JqGridParameter param){
+		List<Member> data = dao.getList(param);
+		int totalPage = getTotalPage(dao.getTotalCount(), param.getRows());
+		return new JqGridData<>(param, data, totalPage);
 	}
 	
 	@RequestMapping("/edit")

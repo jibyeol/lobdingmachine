@@ -39,6 +39,10 @@
 		(#{name}, #{rrn}, #{point}, #{phoneNumber}, #{skinType}, #{rank});
 	</insert>
 	
+	<select id="getTotalCount" resultType="int" >
+		select COUNT(*) from ldcc.member
+	</select>
+	
 </mapper>
 
 
