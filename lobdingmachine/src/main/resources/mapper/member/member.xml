@@ -26,6 +26,19 @@
 		WHERE `idx` = #{idx};
 	</update>
 	
+	<select id="getList" parameterType="JqGridParameter" returnType="Member">
+		select * from ldcc.member
+		ORDER BY idx DESC
+		LIMIT #{offset}, #{rows}
+	</select>
+	
+	<insert id="insert" parameterType="Member" >
+		INSERT INTO `ldcc`.`member` 
+		(`name`, `rrn`, `point`, `phoneNumber`, `skinType`, `rank`) 
+		VALUES 
+		(#{name}, #{rrn}, #{point}, #{phoneNumber}, #{skinType}, #{rank});
+	</insert>
+	
 </mapper>
 
 

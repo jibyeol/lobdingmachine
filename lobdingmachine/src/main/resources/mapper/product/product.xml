@@ -20,7 +20,7 @@
 		    ldcc.product
 		<if test="categoryIdx > 0">
 		WHERE
-		    categoryIdx = #{categoryIdx};
+		    categoryIdx = #{categoryIdx}
 		</if>
 		LIMIT #{offset}, #{rows}
 	</select>
